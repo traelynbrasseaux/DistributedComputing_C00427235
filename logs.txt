@@ -1,0 +1,143 @@
+===== ls =====
+README.md
+logs.txt
+test
+===== mkdir testdir =====
+README.md
+logs.txt
+test
+testdir
+===== uname -a =====
+Linux ip-172-31-46-94.us-east-2.compute.internal 6.1.147-172.266.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Thu Aug  7 19:30:40 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+===== df -h =====
+Filesystem        Size  Used Avail Use% Mounted on
+devtmpfs          4.0M     0  4.0M   0% /dev
+tmpfs             453M     0  453M   0% /dev/shm
+tmpfs             181M  432K  181M   1% /run
+/dev/nvme0n1p1    8.0G  1.8G  6.3G  22% /
+tmpfs             453M     0  453M   0% /tmp
+/dev/nvme0n1p128   10M  1.3M  8.7M  13% /boot/efi
+tmpfs              91M     0   91M   0% /run/user/1000
+===== du -sh =====
+184K	.
+===== pwd =====
+/home/ec2-user
+===== whoami =====
+ec2-user
+===== ps aux | head =====
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  1.8 172528 17424 ?        Ss   Sep02   0:29 /usr/lib/systemd/systemd --switched-root --system --deserialize=32
+root           2  0.0  0.0      0     0 ?        S    Sep02   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Sep02   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Sep02   0:00 [rcu_par_gp]
+root           5  0.0  0.0      0     0 ?        I<   Sep02   0:00 [slub_flushwq]
+root           6  0.0  0.0      0     0 ?        I<   Sep02   0:00 [netns]
+root           8  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/0:0H-events_highpri]
+root          10  0.0  0.0      0     0 ?        I<   Sep02   0:00 [mm_percpu_wq]
+root          11  0.0  0.0      0     0 ?        I    Sep02   0:00 [rcu_tasks_kthread]
+===== top -bn1 =====
+top - 16:23:07 up 6 days, 23:23,  1 user,  load average: 0.00, 0.00, 0.00
+Tasks: 100 total,   1 running,  99 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.0 us,  3.2 sy,  0.0 ni, 96.8 id,  0.0 wa,  0.0 hi,  0.0 si,  0
+MiB Mem :    904.8 total,    238.8 free,    190.9 used,    475.2 buff/cach
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.    576.2 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+
+      1 root      20   0  172528  17424  10676 S   0.0   1.9   0:29.63
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.19
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00
+===== ping -c 2 google.com =====
+PING google.com (142.250.190.110) 56(84) bytes of data.
+64 bytes from ord37s35-in-f14.1e100.net (142.250.190.110): icmp_seq=1 ttl=117 time=7.96 ms
+64 bytes from ord37s35-in-f14.1e100.net (142.250.190.110): icmp_seq=2 ttl=117 time=8.00 ms
+
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 7.962/7.983/8.004/0.021 ms
+===== dig github.com =====
+
+; <<>> DiG 9.18.33 <<>> github.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 6432
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;github.com.			IN	A
+
+;; ANSWER SECTION:
+github.com.		24	IN	A	140.82.113.4
+
+;; Query time: 0 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Tue Sep 09 16:23:08 UTC 2025
+;; MSG SIZE  rcvd: 55
+
+===== host github.com =====
+github.com has address 140.82.113.4
+github.com mail is handled by 10 alt3.aspmx.l.google.com.
+github.com mail is handled by 10 alt4.aspmx.l.google.com.
+github.com mail is handled by 1 aspmx.l.google.com.
+github.com mail is handled by 5 alt1.aspmx.l.google.com.
+github.com mail is handled by 5 alt2.aspmx.l.google.com.
+===== wget --spider github.com =====
+Spider mode enabled. Check if remote file exists.
+--2025-09-09 16:23:08--  http://github.com/
+Resolving github.com (github.com)... 140.82.113.4
+Connecting to github.com (github.com)|140.82.113.4|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+===== tar --version =====
+tar (GNU tar) 1.34
+Copyright (C) 2021 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+===== chmod 755 testdir =====
+drwxr-xr-x. 2 ec2-user ec2-user 6 Sep  9 16:23 testdir
+===== chown ec2-user testdir =====
+drwxr-xr-x. 2 ec2-user ec2-user 6 Sep  9 16:23 testdir
+===== cat /etc/os-release =====
+NAME="Amazon Linux"
+VERSION="2023"
+ID="amzn"
+ID_LIKE="fedora"
+VERSION_ID="2023"
+PLATFORM_ID="platform:al2023"
+PRETTY_NAME="Amazon Linux 2023.8.20250818"
+ANSI_COLOR="0;33"
+CPE_NAME="cpe:2.3:o:amazon:amazon_linux:2023"
+HOME_URL="https://aws.amazon.com/linux/amazon-linux-2023/"
+DOCUMENTATION_URL="https://docs.aws.amazon.com/linux/"
+SUPPORT_URL="https://aws.amazon.com/premiumsupport/"
+BUG_REPORT_URL="https://github.com/amazonlinux/amazon-linux-2023"
+VENDOR_NAME="AWS"
+VENDOR_URL="https://aws.amazon.com/"
+SUPPORT_END="2029-06-30"
+===== head -n 5 /etc/passwd =====
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+===== tail -n 5 /etc/passwd =====
+ec2-instance-connect:x:993:993::/home/ec2-instance-connect:/sbin/nologin
+stapunpriv:x:159:159:systemtap unprivileged user:/var/lib/stapunpriv:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+===== ifconfig =====
+ens5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.46.94  netmask 255.255.240.0  broadcast 172.31.47.255
+        inet6 fe80::8bc:47ff:fe39:5475  prefixlen 64  scopeid 0x20<link>
+        ether 0a:bc:47:39:54:75  txqueuelen 1000  (Ethernet)
+        RX packets 381298  bytes 104558760 (99.7 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 379474  bytes 41391807 (39.4 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
